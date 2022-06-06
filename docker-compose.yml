@@ -1,0 +1,19 @@
+services:
+  ubuntu:
+    build:
+      context: ./build/ubuntu
+      args:
+        - uid=${uid}
+        - gid=${gid}
+    container_name: minecraftserver_ubuntu
+    tty: true
+    stdin_open: true
+    ports:
+      - 25565:25565
+    volumes:
+      - ./server:/home/minecraft/server
+    networks:
+      - minecraftserver
+
+networks:
+  minecraftserver:
